@@ -73,6 +73,15 @@ public class EntityDaoImpl<T, Id extends Serializable> implements EntityDao<T, I
         rowMapper = BeanPropertyRowMapper.newInstance(entityClass);
 
     }
+    
+    public EntityDaoImpl(JdbcTemplate jdbcTemplate) {
+        this();
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public int save(T t) throws Exception {
